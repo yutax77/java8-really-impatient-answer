@@ -15,11 +15,12 @@ public class Ans2Test {
     
     @Before
     public void setUp() throws URISyntaxException {
-	root = new File(getClass().getResource(".").toURI());
+	root = new File(getClass().getResource("file1").toURI()).getParentFile();
 	
 	expected = new File[]{
 		new File(root, "subDir1"),
-		new File(root, "subDir2")
+		new File(root, "subDir2"),
+		new File(root, "subDir3.ext")
 	};
     }
     
@@ -27,7 +28,6 @@ public class Ans2Test {
     public void testSubDirs() {
 	File[] actual = Ans2.getSubDirs(root);
 	
-	assertThat(actual.length, is(2));
 	assertThat(actual, is(expected));
     }
 
@@ -35,7 +35,6 @@ public class Ans2Test {
     public void testSubDirsByLambda() {
 	File[] actual = Ans2.getSubDirsByLambda(root);
 	
-	assertThat(actual.length, is(2));
 	assertThat(actual, is(expected));
     }
     
@@ -43,7 +42,6 @@ public class Ans2Test {
     public void testSubDirsByLambda2() {
 	File[] actual = Ans2.getSubDirsByLambda2(root);
 	
-	assertThat(actual.length, is(2));
 	assertThat(actual, is(expected));
     }
 }
