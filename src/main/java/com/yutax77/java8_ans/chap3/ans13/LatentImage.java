@@ -23,22 +23,12 @@ class LatentImage {
     }
 
     public LatentImage transform(UnaryOperator<Color> f) {
-        pendingOperations.add(new ConvoluteColorTransformer() {
-            @Override
-            public Color apply(int x, int y, Color[][] colors) {
-                return f.apply(colors[x][y]);
-            }
-        });
+        pendingOperations.add((x, y, colors) -> f.apply(colors[x][y]));
         return this;
     }
 
     public LatentImage transform(ColorTransformer transformer) {
-        pendingOperations.add(new ConvoluteColorTransformer() {
-            @Override
-            public Color apply(int x, int y, Color[][] colors) {
-                return transformer.apply(x, y, colors[x][y]);
-            }
-        });
+        pendingOperations.add((x, y, colors) -> transformer.apply(x, y, colors[x][y]));
         return this;
     }
 
