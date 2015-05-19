@@ -16,7 +16,7 @@ public class Chap2TestBase {
     @Before
     public void setUp() throws IOException, URISyntaxException {
         String contents = new String(Files.readAllBytes(
-        	Paths.get(getClass().getResource("alice.txt").toURI())),
+        	Paths.get(Chap2TestBase.class.getResource("alice.txt").toURI())),
         	StandardCharsets.UTF_8); // Read file into string
         words = Arrays.asList(contents.split("[\\P{L}]+"));
     }
