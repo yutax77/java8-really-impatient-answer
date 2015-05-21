@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 public class Ans5 {
     public static class WordCollector implements Callable<Void> {
@@ -32,7 +32,7 @@ public class Ans5 {
             for(String word: words) {
                 collector.merge(
                         word, 
-                        new HashSet<File>(Arrays.asList(file)), 
+                        new ConcurrentSkipListSet<>(Arrays.asList(file)), 
                         (oldVal, val) -> {
                             val.addAll(oldVal);
                             return val;
