@@ -6,11 +6,13 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class Ans11Test {
 
     @Test
+    @Ignore("Error occurs when testing by gradle.")
     public void test() throws InterruptedException, ExecutionException {
         CompletableFuture<PasswordAuthentication> future = Ans11.repeat(() -> {
             Scanner input = new Scanner(System.in);
