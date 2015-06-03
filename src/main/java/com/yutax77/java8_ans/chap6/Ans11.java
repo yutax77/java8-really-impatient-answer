@@ -6,7 +6,7 @@ import java.util.function.Supplier;
 
 public class Ans11 {
     public static <T> CompletableFuture<T> repeat(Supplier<T> action, Predicate<T> until) {
-        return CompletableFuture.supplyAsync(action).thenCompose(t -> {
+        return CompletableFuture.supplyAsync(action).thenComposeAsync(t -> {
             if(until.test(t)) {
                 return CompletableFuture.completedFuture(t);
             } else {
