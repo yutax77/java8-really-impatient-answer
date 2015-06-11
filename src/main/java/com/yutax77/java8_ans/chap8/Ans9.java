@@ -13,22 +13,7 @@ import java.util.stream.StreamSupport;
 
 public class Ans9 {
     public static Stream<String> words(Scanner scanner) {
-        Iterator<String> iter = new Iterator<String>() {
-            @Override
-            public boolean hasNext() {
-                return scanner.hasNext();
-            }
-
-            @Override
-            public String next() {
-                if (hasNext()) {
-                    return scanner.next();
-                } else {
-                    throw new NoSuchElementException();
-                }
-            }
-        };
-        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iter, Spliterator.ORDERED
+        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(scanner, Spliterator.ORDERED
                 | Spliterator.NONNULL), false);
     }
     
