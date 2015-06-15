@@ -14,4 +14,16 @@ public class Ans5 {
 
         return count.get();
     }
+    
+    public static long countLongWordByStream(List<String> words) {
+        return words.stream().filter(w -> {
+            return w.length() > 12;
+        }).count();
+    }
+    
+    public static long countLongWordByParallrelStream(List<String> words) {
+        return words.parallelStream().filter(w -> {
+            return w.length() > 12;
+        }).count();
+    }
 }
